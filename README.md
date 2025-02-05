@@ -3,6 +3,7 @@
 This image extends the [Rundeck Docker Image](https://hub.docker.com/r/rundeck/rundeck) with some useful convenience functions. Since it does __not__ implement a complete separate way of running Rundeck inside a docker image, it is fully compatible with the official image.
 
 The following functionality has been added to this image:
+* [Python and Ansible](#python-and-ansible)
 * [Installing custom plugins](#installing-custom-plugins)
 * [Passing JVM arguments to rundeck process](#jvm-arguments-for-rundeck-process)
 * [Running pre-start hook shell scripts](#pre-start-hook-scripts)
@@ -29,6 +30,13 @@ __Build Multi-Arch (buildx)__
 ```
 
 ## Extended Functionality
+
+### Python and Ansible
+
+This image contains ```Python 3``` as well as [Ansible](https://www.ansible.com/) to be used as a local ansible control node managed by Rundeck.  
+[JMESPath](https://jmespath.org) for use in Ansible Playbooks is available as well.
+[This](https://mixedanalytics.com/tools/jmespath-expression-tester/) can be used for testing/developing JMESPath expressions.
+
 
 ### Installing custom plugins
 
@@ -74,11 +82,11 @@ To perform any modifications to the configuration before starting the rundeck pr
 The pre-start hook scripts are executed __before__ custom plugins are installed. If this execution order is not right for your usecase, implement a pre-start hook scripts that performs plugin installation and name it so it is executed at the appropriate time for your use case.  
 Example `docker-compose` file:
 ```docker-compose
-version: "3"
+---
 services:
  rundeck:
    container_name: rundeck_oss
-   image: salvoxia/rundeck:1.4.11.0
+   image: salvoxia/rundeck:1.5.9.0
    ports:
      - 4440:4440
    environment:
