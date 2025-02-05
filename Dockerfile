@@ -20,7 +20,7 @@ RUN sudo apt -y update \
 # copy the custom entrypoint
 COPY --chown=rundeck:root lib docker-lib
 
-HEALTHCHECK --interval=30s --retries=3 --timeout=5s --start-period=90s CMD curl --fail http://localhost:4440 || exit 1
+HEALTHCHECK --interval=30s --retries=3 --timeout=5s --start-period=120s CMD curl --fail http://localhost:4440 || exit 1
 
 # launch custom entrypoint
 ENTRYPOINT [ "/tini", "--", "docker-lib/custom-entry.sh" ]
