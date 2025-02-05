@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Custom entry point for rundeck docker image
 
 # Run pre-start hooks (if any)
@@ -6,8 +7,8 @@ HOOKS_DIR=/opt/rundeck-prestart-hooks
 if ls $HOOKS_DIR/* 1> /dev/null 2>&1; then
   echo "=> Pre-start hook folder found, running hooks..."
   for script in $(ls $HOOKS_DIR | grep .sh | sort -n); do
-    echo "==> Running script $script"
-    eval $($HOOKS_DIR/$script)
+    echo "==> Running script $HOOKS_DIR/$script"
+    eval "$HOOKS_DIR/$script"
   done
 fi
 
