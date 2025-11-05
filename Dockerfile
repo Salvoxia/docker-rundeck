@@ -1,9 +1,9 @@
-FROM rundeck/rundeck:5.16.0
+FROM rundeck/rundeck:5.17.0
 LABEL maintainer="Salvoxia <salvoxia@blindfish.info>"
 
 # Prevent Timezone prompt when installing python
 ARG DEBIAN_FRONTEND=noninteractive \
-    PYVER=3.12
+    PYVER=3.13
 RUN sudo apt -y update \
   && sudo apt -y --no-install-recommends install tzdata ca-certificates sshpass zip unzip software-properties-common \
   # Install python with pip
