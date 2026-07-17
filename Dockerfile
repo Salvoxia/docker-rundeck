@@ -1,4 +1,4 @@
-FROM rundeck/rundeck:6.0.0
+FROM rundeck/rundeck:6.0.1
 LABEL maintainer="Salvoxia <salvoxia@blindfish.info>"
 
 # Prevent Timezone prompt when installing python
